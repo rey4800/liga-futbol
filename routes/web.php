@@ -28,4 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('torneo',\App\Http\Controllers\TorneoController::class);
+Route::resource('ubicacione',\App\Http\Controllers\UbicacioneController::class);
+
 require __DIR__.'/auth.php';
