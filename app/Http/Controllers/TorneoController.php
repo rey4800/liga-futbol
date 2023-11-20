@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Departamento;
+use App\Models\Estado;
+use App\Models\Genero;
 use App\Models\Torneo;
 use Illuminate\Http\Request;
 
@@ -32,7 +36,11 @@ class TorneoController extends Controller
     public function create()
     {
         $torneo = new Torneo();
-        return view('torneo.create', compact('torneo'));
+        $categoria = Categoria::pluck('categoria','id');
+        $genero = Genero::pluck('nombre','id');
+        $departamento = Departamento::pluck('departamento','id');
+        $estado = Estado::pluck('estado','id');
+        return view('torneo.create', compact('torneo','categoria','genero','departamento','estado'));
     }
 
     /**
@@ -47,8 +55,8 @@ class TorneoController extends Controller
 
         $torneo = Torneo::create($request->all());
 
-        return redirect()->route('torneos.index')
-            ->with('success', 'Torneo created successfully.');
+        return redirect()->route('torneo.index')
+            ->with('success', 'Torneo creado con  exito.');
     }
 
     /**
@@ -74,7 +82,12 @@ class TorneoController extends Controller
     {
         $torneo = Torneo::find($id);
 
-        return view('torneo.edit', compact('torneo'));
+        $categoria = Categoria::pluck('categoria','id');
+        $genero = Genero::pluck('nombre','id');
+        $departamento = Departamento::pluck('departamento','id');
+        $estado = Estado::pluck('estado','id');
+        return view('torneo.edit', compact('torneo','categoria','genero','departamento','estado'));
+        //return view('torneo.edit', compact('torneo'));
     }
 
     /**
@@ -90,8 +103,8 @@ class TorneoController extends Controller
 
         $torneo->update($request->all());
 
-        return redirect()->route('torneos.index')
-            ->with('success', 'Torneo updated successfully');
+        return redirect()->route('torneo.index')
+            ->with('success', 'Torneo editado con exito');
     }
 
     /**
@@ -99,11 +112,15 @@ class TorneoController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    
+    
+     public function destroy($id)
     {
         $torneo = Torneo::find($id)->delete();
-
-        return redirect()->route('torneos.index')
-            ->with('success', 'Torneo deleted successfully');
+        
+        return redirect()->route('torneo.index')
+            ->with('success', 'Torneo Eliminado con exito');
     }
+
+
 }

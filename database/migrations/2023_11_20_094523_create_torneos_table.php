@@ -19,8 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('genero_id');
             $table->unsignedBigInteger('departamento_id');
             $table->string('rango_horas');
-            $table->timestamp('fecha_inicio');
-            $table->timestamp('fecha_fin');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
             $table->unsignedBigInteger('estado_id');
             $table->foreign('genero_id')->references('id')->on('generos')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');

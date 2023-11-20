@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap4.min.css">
 
+<script src="https://kit.fontawesome.com/5f78dc8043.js" crossorigin="anonymous"></script>
    @yield('Mystyles')
 
 <!-- Start GA -->
@@ -60,7 +61,7 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+          Copyright &copy; 2023 <div class="bullet"></div> Design By <a href="#">UES-RGMC</a>
         </div>
         <div class="footer-right">
           
@@ -110,7 +111,7 @@
  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
 
-
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
