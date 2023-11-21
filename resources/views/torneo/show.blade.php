@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin-torneo.layouts.master')
 
 @section('template_title')
     {{ $torneo->name ?? __("Show Torneo") }}
@@ -13,7 +13,7 @@
                         <div class="float-left">
                             <span class="card-title"><h4>Información del Torneo</h4></span>
                         </div>
-                        <div class="float-right">
+                        <div class="float-right" style="display: none">
                             <a class="btn btn-primary" href="{{ route('torneo.index') }}">
                                 <i class="fas fa-arrow-left"></i> Regresar
                             </a>
