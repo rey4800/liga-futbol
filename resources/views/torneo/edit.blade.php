@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Torneo</span>
+                        <span class="card-title">Editar Torneo</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('torneo.update', $torneo->id) }}"  role="form" enctype="multipart/form-data">

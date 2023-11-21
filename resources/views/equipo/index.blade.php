@@ -37,11 +37,11 @@
                                         <th>No</th>
                                         
 										<th>Nombre</th>
+										<th>Imagen</th>
 										<th>Descripcion</th>
 										<th>Categoria Id</th>
 										<th>Ubicacion Id</th>
 										<th>Genero Id</th>
-										<th>Imagen</th>
 
                                         <th>Acciones</th>
                                     </tr>
@@ -52,11 +52,11 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $equipo->nombre }}</td>
+											<td><img src="{{ asset('storage/escudos/'.$equipo->imagen) }}" width="50" class="img-thumbnail rounded-circle"></td>
 											<td>{{ $equipo->descripcion }}</td>
 											<td>{{ $equipo->categoria->categoria }}</td>
 											<td>{{ $equipo->ubicacione->ubicacion }}</td>
 											<td>{{ $equipo->genero->nombre }}</td>
-											<td>{{ $equipo->imagen }}</td>
 
                                             <td>
                                                 <form action="{{ route('equipo.destroy',$equipo->id) }}" method="POST">
@@ -156,6 +156,8 @@ table.buttons().container()
         });
     }
 });
+
+
 
 </script>
 @endsection

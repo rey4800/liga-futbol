@@ -16,7 +16,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                              <h3>Torneos</h3>  
+                              <h4>Torneos</h4>  
                             </span>
 
                              <div class="float-right">

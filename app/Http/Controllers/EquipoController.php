@@ -7,6 +7,7 @@ use App\Models\Genero;
 use App\Models\Equipo;
 use App\Models\Ubicacione;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class EquipoController
@@ -51,7 +52,21 @@ class EquipoController extends Controller
     {
         request()->validate(Equipo::$rules);
 
-        $equipo = Equipo::create($request->all());
+        $file = $request->file('imagen');
+        $fileName = time() . '.' . $file->getClientOriginalExtension();
+    $file->storeAs('public/escudos', $fileName);
+
+        $equipotemp = [
+            'nombre' =>$request->nombre,
+            'descripcion' =>$request->descripcion,
+            'categoria_id' =>$request->categoria_id,
+            'ubicacion_id' =>$request->ubicacion_id,  
+            'genero_id' =>$request->genero_id, 
+            'imagen'=>$fileName 
+        ];
+
+       // $equipo = Equipo::create($request->all());
+       $equipo = Equipo::create($equipotemp);
 
         return redirect()->route('equipo.index')
             ->with('success', 'Equipo creado con exito');
@@ -83,6 +98,8 @@ class EquipoController extends Controller
         $genero = Genero::pluck('nombre','id');
         $ubicacion = Ubicacione::pluck('ubicacion','id');
 
+        $equipo->imagen = asset('storage/escudos/' . $equipo->imagen);
+
         return view('equipo.edit', compact('equipo', 'ubicacion','categoria', 'genero'));
     }
 
@@ -97,7 +114,32 @@ class EquipoController extends Controller
     {
         request()->validate(Equipo::$rules);
 
-        $equipo->update($request->all());
+        $fileName = '';
+        $equipo1 = Equipo::find($equipo->id);
+
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/escudos', $fileName);
+            if ($equipo1->imagen) {
+                Storage::delete('public/escudos/' . $equipo1->imagen);
+            }
+        } else {
+            $fileName = $request->imagen;
+            
+        }
+
+        $equipotemp = [
+            'nombre' =>$request->nombre,
+            'descripcion' =>$request->descripcion,
+            'categoria_id' =>$request->categoria_id,
+            'ubicacion_id' =>$request->ubicacion_id,  
+            'genero_id' =>$request->genero_id, 
+            'imagen'=>$fileName 
+        ];
+        //$equipo->update($request->all());
+
+        $equipo1->update($equipotemp);
 
         return redirect()->route('equipo.index')
             ->with('success', 'Equipo actualizado con exito');
@@ -110,7 +152,12 @@ class EquipoController extends Controller
      */
     public function destroy($id)
     {
-        $equipo = Equipo::find($id)->delete();
+        $equipo = Equipo::find($id);
+
+        if (Storage::delete('public/escudos/' . $equipo->imagen)) {
+           
+            $equipo->delete();
+        }
 
         return redirect()->route('equipo.index')
             ->with('success', 'Equipo eliminado con exito');
