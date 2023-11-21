@@ -87,7 +87,7 @@ class TorneoController extends Controller
         $departamento = Departamento::pluck('departamento','id');
         $estado = Estado::pluck('estado','id');
         return view('torneo.edit', compact('torneo','categoria','genero','departamento','estado'));
-        //return view('torneo.edit', compact('torneo'));
+       
     }
 
     /**

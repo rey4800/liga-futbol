@@ -10,6 +10,7 @@
         <li class="menu-header">Dashboard</li>
         <li><a class="nav-link" href="{{ route('dashboard') }}"><i class="fa-solid fa-table-columns"></i><span>Dashboard</span></a></li>
         <li><a class="nav-link" href="{{ route('torneo.index') }}"><i class="fa-solid fa-trophy"></i><span>Torneos</span></a></li>
+        <li><a class="nav-link" href="{{ route('equipo.index') }}"><i class="fa-solid fa-shield"></i><span>Equipos</span></a></li>
         <li class="menu-header">Starter</li>
         <li class="dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>

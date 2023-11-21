@@ -31,5 +31,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('torneo',\App\Http\Controllers\TorneoController::class);
 Route::resource('ubicacione',\App\Http\Controllers\UbicacioneController::class);
+Route::resource('equipo',\App\Http\Controllers\EquipoController::class);
 
 require __DIR__.'/auth.php';
