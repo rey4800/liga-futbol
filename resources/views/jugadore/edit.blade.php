@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('template_title')
-    {{ __('Update') }} Equipo
+    {{ __('Update') }} Jugadore
 @endsection
 
 @section('content')
@@ -13,19 +13,19 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Equipo</span>
+                        <span class="card-title">Actualizar Informacion Jugador</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('equipo.update', $equipo->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('jugadore.update', $jugadore->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('equipo.form')
+                            @include('jugadore.form')
 
                             <div class="form-group">
                                 {{ Form::label('imagen') }}
                                 {{ Form::file('imagen', ['class' => 'form-control-file', 'id' => 'imagenInput']) }}
-                                <img id="imagenPreview" src="{{ isset($equipo->imagen) ? $equipo->imagen : '#' }}" alt="Vista previa de la imagen" style="max-width: 200px; max-height: 200px; margin-top: 10px;">  
+                                <img id="imagenPreview" src="{{ isset($jugadore->imagen) ? $jugadore->imagen : '#' }}" alt="Vista previa de la imagen" style="max-width: 200px; max-height: 200px; margin-top: 10px;">
                                 {!! $errors->first('imagen', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
@@ -40,7 +40,6 @@
         </div>
     </section>
 @endsection
-
 
 @section('Myjavascript')
 

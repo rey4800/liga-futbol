@@ -112,7 +112,7 @@ class EquipoController extends Controller
      */
     public function update(Request $request, Equipo $equipo)
     {
-        request()->validate(Equipo::$rules);
+        //request()->validate(Equipo::$rules);
 
         $fileName = '';
         $equipo1 = Equipo::find($equipo->id);
@@ -125,7 +125,7 @@ class EquipoController extends Controller
                 Storage::delete('public/escudos/' . $equipo1->imagen);
             }
         } else {
-            $fileName = $request->imagen;
+            $fileName = $equipo1->imagen;
             
         }
 

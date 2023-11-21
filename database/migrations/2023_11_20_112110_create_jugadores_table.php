@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('apellido');
             $table->integer('edad');
             $table->unsignedBigInteger('genero_id');
-            $table->string('dni');
+            $table->string('dni')->nullable();
             $table->unsignedBigInteger('equipo_id');
             $table->unsignedBigInteger('posicion_id');
             $table->integer('numero_jugador');
