@@ -9,6 +9,7 @@
       <ul class="sidebar-menu">
         <li class="menu-header">Administrar Torneo</li>
         <li><a class="nav-link" href="{{ route('torneo.show', $torneo->id) }}"><i class="fa-solid fa-trophy"></i><span>{{ $torneo->nombre }}</span></a></li>
+        <li><a class="nav-link" href="{{ route('equiposinscrito.index',$torneo->id)}}"><i class="fa-regular fa-clipboard"></i><span>Gestionar Inscripciones</span></a></li>
         <li class="menu-header">Starter</li>
         <li class="dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
