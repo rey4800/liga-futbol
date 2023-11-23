@@ -35,5 +35,6 @@ Route::resource('equipo',\App\Http\Controllers\EquipoController::class);
 Route::resource('jugadore', \App\Http\Controllers\JugadoreController::class);
 Route::resource('torneo/{torneo}/equiposinscrito', \App\Http\Controllers\EquiposinscritoController::class);
 Route::resource('torneo/{torneo}/partido', \App\Http\Controllers\PartidoController::class);
+Route::post('torneo/{torneo}/goles', [\App\Http\Controllers\PartidoController::class, 'goles'])->name('goles');
 
 require __DIR__.'/auth.php';

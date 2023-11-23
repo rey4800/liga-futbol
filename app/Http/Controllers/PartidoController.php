@@ -9,6 +9,9 @@ use App\Models\Partido;
 use App\Models\Torneo;
 use Illuminate\Http\Request;
 
+//MANEJAR ALERTAS 
+use Illuminate\Support\Facades\Session;
+
 /**
  * Class PartidoController
  * @package App\Http\Controllers
@@ -85,13 +88,32 @@ class PartidoController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+
+     
+     public function show($id_torneo,$id)
+     {
+        $partido = Partido::find($id);
+        $torneo = Torneo::find($id_torneo);
+        $estado = Estado::pluck('estado','id');
+        
+       $equipos = Equiposinscrito::where('torneo_id', $torneo->id)
+       ->join('equipos', 'equiposinscritos.equipo_id', '=', 'equipos.id')
+       ->pluck('equipos.nombre','equipos.id');
+
+ 
+         return view('partido.show', compact('partido','torneo','estado','equipos'));
+     }
+
+     
+     /*
+     
     public function show($id_torneo,$id)
     {
         $partido = Partido::find($id);
         $torneo = Torneo::find($id_torneo);
 
         return view('partido.show', compact('partido','torneo'));
-    }
+    }*/
 
     /**
      * Show the form for editing the specified resource.
@@ -140,5 +162,19 @@ class PartidoController extends Controller
 
         return redirect()->route('partido.index',$torneo_id)
             ->with('success', 'Partido Eliminado con Exito');
+    }
+
+
+    public function goles($id_torneo,Request $request){
+
+
+        $id = $request->id;
+
+
+      
+        return $this->show($id_torneo, $id);
+
+      
+
     }
 }
